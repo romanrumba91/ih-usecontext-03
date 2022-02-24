@@ -40,45 +40,40 @@ export default function Food() {
 
     }
 
-  return (
+    return (
         <>
-
-            <form onSubmit={(evt) => {handleSubmit(evt)}}>
-                <label>Nombre</label>
-                    <input 
-                    name = "name"
-                    value = {food.name}
-                    onChange={evt=> {handleChange(evt)}}
-                    />
-                <label>Precio</label>
-                    <input 
-                    precio = "price"
-                    value = {food.price}
-                    onChange={evt=> {handleChange(evt)}}
-                    />
-                <button>Crear alimento</button>
-
-                <p>{error}</p>
-
-            </form>
-        
-            <b><h2>Listado de comidas</h2></b>
-
-            {
-				list.length === 0 ? 
-					<p>No hay publicaciones</p> 
-				:
-					list.map((elt, index) => {
-						return (
-							<div className="mb-4 bg-white text-black" key={index}>
-								<h3>Food: {elt.food}</h3>
-								<h3>Price: {elt.price}</h3>
-                        )
-                    })
-
-            }
-
-            
+        <h1>Food Form</h1>
+            <form onSubmit={ (event) => { handleSubmit(event) }}>
+              <label>Nombre</label>
+              <input 
+                  name="name"
+                  onChange={(event) => handleChange(event)}
+              />	  
+              <label>Precio</label>
+              <input 
+                  name="price"
+                  onChange={(event) => handleChange(event)}
+              />	
+  
+              <button type="submit">Crear alimento</button>  
+          </form>
+  
+          <h1>List of Foods</h1>
+          {
+                  list.length === 0 ? 
+                      <p>No hay comidas</p> 
+                  :
+                      list.map((element, index) => {
+                          return (
+                              <div key={index}>
+                                  <p>Name: {element.name}</p>
+                                  <p>Price: {element.price}</p>
+                              </div>
+                          )
+                      })
+              }
         </>
-  )
+      
+  
+    )
 }
